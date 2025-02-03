@@ -142,5 +142,26 @@ function lightModeProperties() {
   localStorage.setItem("dark-mode", false);
 }
 
+function init(){
+  //initialse dark-mode variable to false;
+  darkMode = false;
 
-getUserData(url + "shilpakumari178");
+  //dark mode default
+const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+if (localStorage.getItem("dark-mode")) {
+  darkMode = localStorage.getItem("dark-mode");
+  darkModeProperties();
+} else {
+  localStorage.setItem("dark-mode", prefersDarkMode);
+  darkMode = prefersDarkMode;
+  lightModeProperties();
+}
+
+//by default shilpa's id will be shown when the page is reloaded:)
+getUserData(url + "shilpagit178");
+}
+
+init();
+
+
